@@ -8,7 +8,6 @@ Cell::Cell()
 {
   historyMaxSize = 100;
   stagedState = 0;
-  setState(false);
 }
 
 
