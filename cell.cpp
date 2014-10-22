@@ -7,6 +7,8 @@
 Cell::Cell()
 {
   historyMaxSize = 100;
+  stagedState = 0;
+  setState(false);
 }
 
 
@@ -30,6 +32,19 @@ bool Cell::getState()
 bool Cell::getState(unsigned int offset)
 {
   return history[offset];
+}
+
+
+// State staging
+
+void Cell::stageState(bool state)
+{
+  stagedState = state;
+}
+
+void Cell::commitState()
+{
+  setState(stagedState);
 }
 
 

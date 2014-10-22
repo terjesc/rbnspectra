@@ -13,6 +13,10 @@ class Cell
     bool getState();
     bool getState(unsigned int offset);
 
+    // State staging
+    void stageState(bool state);
+    void commitState();
+
     // History
     unsigned int getHistorySize();
     std::vector<bool> getHistory();
@@ -25,5 +29,6 @@ class Cell
   private:
     unsigned int historyMaxSize;
     std::deque<bool> history;
+    bool stagedState;
 };
 
