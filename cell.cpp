@@ -10,6 +10,12 @@ Cell::Cell()
   stagedState = 0;
 }
 
+void Cell::reset()
+{
+  stagedState = 0;
+  history = std::deque<bool> ();
+}
+
 
 // Current state
 

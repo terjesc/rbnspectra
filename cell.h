@@ -8,6 +8,8 @@ class Cell
   public:
     Cell();
 
+    void reset();
+
     // Current state
     void setState(bool state);
     bool getState();
