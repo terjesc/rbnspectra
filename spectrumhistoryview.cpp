@@ -1,29 +1,38 @@
 #include "spectrumhistoryview.h"
 #include <QWidget>
 #include <QPainter>
+#include <deque>
 
 SpectrumHistoryView::SpectrumHistoryView(QWidget *parent)
   : QWidget(parent)
 {
-  history = std::vector<std::vector<int> >();
+  history = std::deque<std::vector<int> >();
   maxAmplitude=255;
   
+  historyMaxSize=100;
+  
   setMinimumSize(256, 256);
+
 }
 
 void SpectrumHistoryView::addSpectrum(const std::vector<int> &newSpectrum)
 {
-  history.push_back(newSpectrum);
+  history.push_front(newSpectrum);
+
+  while (history.size() > historyMaxSize)
+  {
+    history.pop_back();
+  }
 }
 
-void SpectrumHistoryView::setHistory(const std::vector<std::vector<int> > &newHistory)
+void SpectrumHistoryView::setHistory(const std::deque<std::vector<int> > &newHistory)
 {
   history = newHistory;
 }
 
 void SpectrumHistoryView::clearHistory()
 {
-  history = std::vector<std::vector<int> >();
+  history = std::deque<std::vector<int> >();
 }
 
 int SpectrumHistoryView::getHistorySize()
@@ -47,18 +56,10 @@ void SpectrumHistoryView::paintEvent(QPaintEvent *)
       painter.drawLine
         (
           column * width() / history[line].size(),//x1
-          history.size() - line,//y1
+          line,//y1
           (column + 1) * width() / history[line].size(),//x2
-          history.size() - line//y2
+          line//y2
         );
-
-/*      painter.drawRect
-        (
-          column * width() / history[line].size(),//x
-          line * height() / history.size(),//y
-          width() / history[line].size(),//width
-          height() / history.size()//height
-        );*/
     }
   }
 }

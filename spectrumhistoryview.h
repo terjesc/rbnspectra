@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QWidget>
+#include <deque>
 
 class SpectrumHistoryView : public QWidget
 {
@@ -9,14 +10,16 @@ class SpectrumHistoryView : public QWidget
 public:
   SpectrumHistoryView(QWidget *parent = 0);
   void addSpectrum(const std::vector<int> &);
-  void setHistory(const std::vector<std::vector<int> > &);
+  void setHistory(const std::deque<std::vector<int> > &);
   int getHistorySize();
 
 private slots:
   void clearHistory();
 
 private:
-  std::vector<std::vector<int> > history;
+  std::deque<std::vector<int> > history;
+  unsigned int historyMaxSize;
+  
   int maxAmplitude;
 
 protected:
