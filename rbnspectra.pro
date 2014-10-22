@@ -9,5 +9,14 @@ QT += widgets \
       gui
 
 # Input
-HEADERS += mainwindow.h spectrumview.h spectrumgraph.h spectrumhistoryview.h
-SOURCES += main.cpp mainwindow.cpp spectrumview.cpp spectrumgraph.cpp spectrumhistoryview.cpp
+HEADERS += mainwindow.h \
+  spectrumview.h \
+  spectrumgraph.h \
+  spectrumhistoryview.h \
+  cell.h
+SOURCES += main.cpp \
+  mainwindow.cpp \
+  spectrumview.cpp \
+  spectrumgraph.cpp \
+  spectrumhistoryview.cpp \
+  cell.cpp
