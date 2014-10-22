@@ -40,7 +40,7 @@ void SpectrumHistoryView::paintEvent(QPaintEvent *)
 
   for (int line=0; line < getHistorySize(); ++line)
   {
-    for (int column=0; column < history[line].size(); ++column)
+    for (unsigned int column=0; column < history[line].size(); ++column)
     {
       painter.setBrush(QColor(history[line][column]));
       painter.setPen(QColor(history[line][column]));
