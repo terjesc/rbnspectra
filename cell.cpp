@@ -9,6 +9,9 @@ Cell::Cell()
   historyMaxSize = 100;
 }
 
+
+// Current state
+
 void Cell::setState(bool state)
 {
   history.push_front(state);
@@ -24,10 +27,13 @@ bool Cell::getState()
   return history.back();
 }
 
-bool Cell::getState(int offset)
+bool Cell::getState(unsigned int offset)
 {
   return history[offset];
 }
+
+
+// History
 
 unsigned int Cell::getHistorySize()
 {
@@ -44,5 +50,67 @@ std::vector<bool> Cell::getHistory()
   }
 
   return result;
+}
+
+
+// Aggregate information from history
+
+unsigned int Cell::changes(unsigned int historySize)
+{
+  unsigned int changeCount = 0;
+
+  if (historySize == 0)
+    historySize = history.size();
+
+  std::deque<bool>::iterator it = history.begin();
+  bool previous = *it;
+  it++;
+
+  for (unsigned int i = 1; i < historySize; ++i)
+  {
+    if (it == history.end())
+      break;
+
+    if (previous != *it)
+    {
+      previous = *it;
+      ++changeCount;
+    }
+    
+    it++;
+  }
+
+  return changeCount;
+}
+
+unsigned int Cell::liveCount(unsigned int historySize)
+{
+  unsigned int liveCount = 0;
+
+  if (historySize == 0)
+    historySize = history.size();
+
+  std::deque<bool>::iterator it = history.begin();
+
+  for (unsigned int i = 0; i < historySize; ++i)
+  {
+    if (it == history.end())
+      break;
+
+    if (*it)
+      ++liveCount;
+    
+    it++;
+  }
+
+  return liveCount;
+}
+
+unsigned int Cell::deadCount(unsigned int historySize)
+{
+  if (historySize == 0)
+    historySize = history.size();
+
+  return historySize - liveCount(historySize);
 }
 
