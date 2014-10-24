@@ -16,27 +16,20 @@ int main(int argc, char **argv)
   QApplication app(argc, argv);
   
   app.setApplicationName("RBN-spectra");
+  
   SpectrumView window;
-
-  /*
-  std::vector<std::vector<int> > history;
-  int lineCount = std::rand() % 128;
-  int valueCount = std::rand() % 256;
-  lineCount = 256;
-  valueCount = 128;
-  for (int i=0; i < lineCount; ++i)
-  {
-    std::vector<int> values;
-    for (int i=0; i < valueCount; ++i)
-    {
-      values.push_back(std::rand() % 256);
-    }
-    history.push_back(values);
-  }
-  window.setHistory(history);
-  */
-
   window.show();
+
+  Life life;
+  std::vector<bool> initialLife;
+  initialLife.push_back(false);
+  initialLife.push_back(true);
+  initialLife.push_back(true);
+  initialLife.push_back(true);
+  life.load(initialLife, 8, 8);
+  life.tick(10);
+
+
   return app.exec();
 }
 
