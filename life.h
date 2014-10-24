@@ -20,6 +20,9 @@ class Life
     void setHeight(unsigned int height) { this->height = height; }
     std::vector<Cell> cells;
     unsigned int width, height;
+    
+    unsigned int index(unsigned int row, unsigned int column);
+    void commitStagedStates();
 
 };
 

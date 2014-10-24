@@ -3,6 +3,7 @@
 #include "spectrumview.h"
 #include "spectrumgraph.h"
 #include "spectrumhistoryview.h"
+#include "life.h"
 #include <cstdlib>
 #include <ctime>
 

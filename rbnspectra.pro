@@ -13,10 +13,13 @@ HEADERS += mainwindow.h \
   spectrumview.h \
   spectrumgraph.h \
   spectrumhistoryview.h \
-  cell.h
+  cell.h \
+  life.h
 SOURCES += main.cpp \
   mainwindow.cpp \
   spectrumview.cpp \
   spectrumgraph.cpp \
   spectrumhistoryview.cpp \
-  cell.cpp
+  cell.cpp \
+  life.cpp
+
