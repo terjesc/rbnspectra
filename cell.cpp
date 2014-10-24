@@ -10,6 +10,13 @@ Cell::Cell()
   stagedState = 0;
 }
 
+Cell::Cell(bool initialState)
+{
+  historyMaxSize = 100;
+  stagedState = 0;
+  setState(initialState);
+}
+
 void Cell::reset()
 {
   stagedState = 0;

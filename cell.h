@@ -7,6 +7,7 @@ class Cell
 {
   public:
     Cell();
+    Cell(bool initialValue);
 
     void reset();
 
