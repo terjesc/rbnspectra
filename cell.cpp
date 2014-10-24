@@ -20,7 +20,7 @@ Cell::Cell(bool initialState)
 void Cell::reset()
 {
   stagedState = 0;
-  history = std::deque<bool> ();
+  history.clear();
 }
 
 
@@ -38,7 +38,10 @@ void Cell::setState(bool state)
 
 bool Cell::getState()
 {
-  return history.back();
+  if (history.size())
+    return history.back();
+  else
+    return false;
 }
 
 bool Cell::getState(unsigned int offset)
