@@ -1,11 +1,24 @@
 
 #include "life.h"
 
+Life::Life()
+{
+  reset();
+}
+
 unsigned int Life::index(unsigned int row, unsigned int column)
 {
   row = row % getHeight();
   column = column % getWidth();
   return row * getWidth() + column;
+}
+
+void Life::tick(unsigned int times)
+{
+  for (unsigned int i = 0; i < times; ++i)
+  {
+    tick();
+  }
 }
 
 void Life::tick()
@@ -84,6 +97,10 @@ void Life::load(std::vector<bool> bitmap, unsigned int width, unsigned int heigh
     if (cells.size() >= maxSize)
       break;
   }
+
+  // Populate cells (if missing)
+  while (cells.size() < maxSize)
+    cells.push_back(Cell(false));
 
 }
 

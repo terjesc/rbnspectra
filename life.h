@@ -8,6 +8,7 @@ class Life
     Life();
 
     void tick();
+    void tick(unsigned int times);
     void clear();
     void reset();
     void load(std::vector<bool> bitmap, unsigned int width, unsigned int height);
