@@ -9,7 +9,7 @@ SpectrumHistoryView::SpectrumHistoryView(QWidget *parent)
   history = std::deque<std::vector<int> >();
   maxAmplitude=255;
   
-  historyMaxSize=100;
+  historyMaxSize=255;
   
   setMinimumSize(256, 256);
 
